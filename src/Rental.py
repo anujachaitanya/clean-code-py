@@ -10,13 +10,13 @@ class Rental:
     def get_movie(self):
         return self.__movie
     
-    def get_rental_points(self):
+    def rental_points(self):
         rental_point = 1
         if self.__movie.get_price_code() == Movie.NEW_RELEASE and self.__daysRented > 1:
             rental_point += 1
         return rental_point
     
-    def calculate_amount(self):
+    def amount(self):
         amount = 0
         price_code = self.__movie.get_price_code()
         if price_code == Movie.REGULAR:
