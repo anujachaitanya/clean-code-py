@@ -9,7 +9,7 @@ class Customer:
     def get_name(self):
         return self.__name
 
-    def total_amount(self):
+    def total_rental_amount(self):
         total_amount = 0   
         for rental in self.__rentals:
             total_amount += rental.amount()
@@ -22,23 +22,23 @@ class Customer:
         return frequent_renter_points
 
     def text_statement(self): 
-        result = "Rental Record for " + self.get_name() + "\n"
+        statement = "Rental Record for " + self.get_name() + "\n"
         for rental in self.__rentals:
-            result += "\t" + rental.get_movie().get_title() + "\t" + str(rental.amount()) + "\n"
+            statement += "\t" + rental.get_movie().get_title() + "\t" + str(rental.amount()) + "\n"
             
-        total_amount = self.total_amount()
+        total_amount = self.total_rental_amount()
 
-        result += "Amount owed is " + str(total_amount) + "\n"
-        result += "You earned " + str(self.total_frequent_renter_points()) + " frequent renter points"
-        return result
+        statement += "Amount owed is " + str(total_amount) + "\n"
+        statement += "You earned " + str(self.total_frequent_renter_points()) + " frequent renter points"
+        return statement
     
     def html_statement(self):
-        result = "<h1>Rental Record for " + self.get_name() + "</h1><br><p>"
+        statement = "<h1>Rental Record for " + self.get_name() + "</h1><br><p>"
         for rental in self.__rentals:
-            result += rental.get_movie().get_title() + "\t" + str(rental.amount()) + "<br>"
+            statement += rental.get_movie().get_title() + "\t" + str(rental.amount()) + "<br>"
         
-        total_amount = self.total_amount()
+        total_amount = self.total_rental_amount()
                     
-        result += "Amount owed is " + str(total_amount) + "<br>"
-        result += "You earned " + str(self.total_frequent_renter_points()) + " frequent renter points</p>"
-        return result
+        statement += "Amount owed is " + str(total_amount) + "<br>"
+        statement += "You earned " + str(self.total_frequent_renter_points()) + " frequent renter points</p>"
+        return statement
